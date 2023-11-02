@@ -1,39 +1,46 @@
-import hotels from './data.js';
+const obj1 = {
+  a: 'a',
+  b: {
+    a: 'a',
+    b: 'b',
+    c: {
+      a: 1,
+    },
+  },
+};
+const obj2 = {
+  b: {
+    c: {
+      a: 1,
+    },
+    b: 'b',
+    a: 'a',
+  },
+  a: 'a',
+};
+const obj3 = {
+  a: {
+    c: {
+      a: 'a',
+    },
+    b: 'b',
+    a: 'a',
+  },
+  b: 'b',
+};
 
-const palindromeCheck = (x) =>
-  console.log(x === x.split('').reverse('').join(''));
-
-palindromeCheck('шалаш');
-
-console.log('----------');
-function search(searchRequest) {
-  const searchResult = hotels.reduce((acc, item) => {
-    if (
-      item.country === searchRequest ||
-      item.city === searchRequest ||
-      item.name === searchRequest
-    ) {
-      acc += [`${item.country} ${item.city} ${item.name} `];
+const deepEqual = (object1, object2) => {
+  for (const x in object1) {
+    if (Object.prototype.hasOwnProperty.call(object1, x) !== Object.prototype.hasOwnProperty.call(object2, x)) return false;
+    if (typeof object1[x] == 'object') {
+      if (!deepEqual(object1[x], object2[x])) return false;
     }
-    return acc;
-  });
-  console.log(searchResult);
-}
+  }
+  return true;
+};
 
-search('USA');
-
-console.log('----------');
-
-const searchUnique = (hotels) =>
-  hotels.reduce((result, hotels) => {
-    result[hotels.country]
-      ? result[hotels.country].push(hotels.city)
-      : (result[hotels.country] = [hotels.city]);
-
-    return result;
-  }, {});
-
-console.log(searchUnique(hotels));
+console.log(deepEqual(obj1, obj2));
+console.log(deepEqual(obj1, obj3));
 
 console.log('----------');
 
