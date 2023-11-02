@@ -1,112 +1,55 @@
-const obj1 = {
-  a: 'a',
-  b: {
-    a: 'a',
-    b: 'b',
-    c: {
-      a: 1,
-    },
-  },
-};
-const obj2 = {
-  b: {
-    c: {
-      a: 1,
-    },
-    b: 'b',
-    a: 'a',
-  },
-  a: 'a',
-};
-const obj3 = {
-  a: {
-    c: {
-      a: 'a',
-    },
-    b: 'b',
-    a: 'a',
-  },
-  b: 'b',
-};
-
-const deepEqual = (object1, object2) => {
-  for (const x in object1) {
-    if (Object.prototype.hasOwnProperty.call(object1, x) !== Object.prototype.hasOwnProperty.call(object2, x)) return false;
-    if (typeof object1[x] == 'object') {
-      if (!deepEqual(object1[x], object2[x])) return false;
-    }
+import studentsData from "./data.js";
+class User {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
   }
-  return true;
-};
 
-console.log(deepEqual(obj1, obj2));
-console.log(deepEqual(obj1, obj3));
+  get fullName () {
+    return `${this.firstName} ${this.lastName}`
+  }
+}
+let user = new User("Ivan", "Ivanov");
 
-console.log('----------');
+console.log(user)
 
-function month(day, daysInMonth, daysInWeek, checkIn, checkOut) {
-  if (day > daysInWeek) {
-    throw new Error('День больше количества дней в неделе');
+class Student extends User {
+  constructor(admissionYear, courseName, firstName, lastName) {
+    super(firstName, lastName);
+    this.admissionYear = admissionYear;
+    this.courseName = courseName
   }
-  const monthArr = [];
-  if (day > 1 && day <= daysInWeek) {
-    const weekArr = [];
-    let prevMonth = daysInMonth - day;
-    while (prevMonth <= daysInMonth) {
-      const dayInfo = {
-        dayOfMonth: prevMonth,
-        notCurrentMonth: true,
-        selectedDay: false,
-      };
-      prevMonth++;
-      weekArr.push(dayInfo);
-      day = 1;
-    }
-    if (weekArr.length < daysInWeek) {
-      while (weekArr.length < daysInWeek && day <= daysInMonth) {
-        const selectCheck = day >= checkIn && day <= checkOut;
-        const dayInfo = {
-          dayOfMonth: day,
-          notCurrentMonth: false,
-          selectedDay: selectCheck,
-        };
-        weekArr.push(dayInfo);
-        day++;
-      }
-    }
-    monthArr.push(weekArr);
+
+  get course() {
+    let currentYear = 2023
+    return currentYear - this.admissionYear
   }
-  while (day < daysInMonth) {
-    monthArr.push(week(day, daysInMonth, daysInWeek, checkIn, checkOut));
-    day += daysInWeek;
-  }
-  return monthArr;
 }
 
-function week(day, daysInMonth, daysInWeek, checkIn, checkOut) {
-  const weekArr = [];
-  let nextMonth = 1;
-  while (weekArr.length < daysInWeek) {
-    if (weekArr.length < daysInWeek && day <= daysInMonth) {
-      const selectCheck = day >= checkIn && day <= checkOut;
-      const dayInfo = {
-        dayOfMonth: day,
-        notCurrentMonth: false,
-        selectedDay: selectCheck,
-      };
-      weekArr.push(dayInfo);
-      day++;
-    } else if (day > daysInMonth) {
-      const dayInfo = {
-        dayOfMonth: nextMonth,
-        notCurrentMonth: true,
-        selectedDay: false,
-      };
-      weekArr.push(dayInfo);
-      nextMonth++;
-    }
+let student = new Student(2019, "Java", "Ivan", "Ivanoff")
+console.log(student)
+
+class Students {
+  constructor(array) {
+    this.array = array.reduce((array, student) => {
+      array.push(
+          new Student(
+              student.admissionYear,
+              student.courseName,
+              student.firstName,
+              student.lastName,
+          ),
+      );
+      return array;
+    }, []);
   }
-  return weekArr;
+
+  getInfo() {
+    return this.array
+        .sort((a, b) => (a.course - b.course))
+        .map((student) => `${student.fullName} - ${student.courseName}, ${student.course} курс`)
+  }
 }
 
-console.log(month(2, 30, 7, 15, 25));
+let students = new Students(studentsData)
+console.log(students.getInfo());
