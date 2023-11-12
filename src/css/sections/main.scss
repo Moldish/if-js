@@ -1,0 +1,251 @@
+.main {
+  height: 100vh;
+  background-image: url('../../images/main/background.svg');
+  background-size: cover;
+}
+
+.header {
+  padding-top: 50px;
+  padding-bottom: 200px;
+  fill: var(--accent-blue);
+
+  &__navbar {
+    font-size: 24px;
+    color: var(--white);
+    display: flex;
+    gap: 48px;
+  }
+
+  &__links {
+    position: relative;
+    margin: 0 auto;
+  }
+
+  &__links::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: calc(50% - 25px);
+    width: 50px;
+    height: 4px;
+    background: var(--selection-colour);
+    opacity: 0;
+  }
+
+  &__links:hover::after {
+    opacity: 1;
+    animation: expand-width 0.2s cubic-bezier(0.42, 0, 0.04, 0.99);
+  }
+}
+
+.navbar__common {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.svg-menu {
+  display: none;
+}
+
+.motto {
+  font-weight: 500;
+  font-size: 50px;
+  color: var(--white);
+  padding-top: unset;
+  padding-bottom: 145px;
+}
+
+.filter {
+  margin: 0 auto;
+  border-radius: 8px;
+  background-color: var(--white);
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 192px;
+
+  &__label {
+    font-size: 18px;
+    color: var(--white);
+    position: absolute;
+    top: -46px;
+    left: 24px;
+  }
+
+  &__element {
+    border-radius: 8px;
+    border: none;
+    font-size: 18px;
+    appearance: none;
+    height: 100%;
+    color: var(--text-main);
+  }
+
+  &__element:focus {
+    outline: 3px solid var(--selection-colour);
+    outline-offset: -3px;
+  }
+
+  &__element-city {
+    grid-column: 1;
+    position: relative;
+  }
+
+  .city-search {
+    width: 100%;
+    padding-left: 24px;
+  }
+
+  &__element-date {
+    grid-column: 2;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  #date-in {
+    width: 50%;
+    padding-left: 24px;
+  }
+
+  #date-out {
+    width: 50%;
+    padding-right: 24px;
+  }
+
+  &__element-persons {
+    grid-column: 3;
+    display: flex;
+    align-items: center;
+  }
+
+  &__element-p {
+    text-align: center;
+    width: 33.3%;
+  }
+
+  &__element-p:nth-child(1) {
+    padding-left: 24px;
+  }
+
+  &__element-p:nth-child(5) {
+    padding-right: 24px;
+  }
+
+  &__btn {
+    grid-column: 4;
+    background-color: var(--accent-blue);
+    border-radius: 8px;
+    color: var(--white);
+    font-weight: 500;
+    font-size: 24px;
+    padding: 20px 57px;
+    border: unset;
+  }
+}
+
+.downloads {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  padding-top: 120px;
+}
+
+@media (max-width: 468px) {
+  .header {
+    padding-top: 12px;
+    padding-bottom: 40px;
+  }
+
+  .header__logo {
+    width: 122px;
+  }
+
+  .svg-account {
+    width: 1.5rem;
+  }
+
+  .svg-night {
+    width: 1rem;
+  }
+
+  .svg-menu {
+    display: unset;
+    fill: var(--white);
+  }
+
+  .header__navbar-left {
+    display: none;
+  }
+
+  .motto {
+    font-size: 30px;
+    padding-bottom: 2rem;
+  }
+
+  .filter {
+    grid-template-columns: 100%;
+    grid-template-rows: repeat(4, 48px);
+    border-radius: 0;
+    border: 8px solid var(--selection-colour);
+    grid-row-gap: 8px;
+    background-color: var(--selection-colour);
+
+    &__label {
+      display: none;
+    }
+
+    &__element:focus {
+      outline: none;
+    }
+
+    &__element-city {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    &__element-date {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    #date-in {
+      margin-right: 8px;
+    }
+
+    &__element-separate-h {
+      display: none;
+    }
+
+    &__element-separate-v {
+      display: unset;
+      border-left: 1px solid var(--text-secodary);
+      height: 32px;
+    }
+
+    &__element-persons {
+      background-color: var(--white);
+      grid-column: 1;
+      grid-row: 3;
+      border-radius: 8px;
+    }
+
+    #adults {
+      border-radius: 8px 0 0 8px;
+    }
+
+    #room {
+      border-radius: 0 8px 8px 0;
+    }
+
+    &__btn {
+      grid-column: 1;
+      grid-row: 4;
+      font-size: 19px;
+      padding: unset;
+    }
+  }
+
+  .downloads {
+    padding-bottom: 2.5rem;
+  }
+}

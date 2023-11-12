@@ -1,0 +1,185 @@
+mixin destinations
+	section.destinations
+		.container
+			h2.title The best destinations
+			.destination__controls
+				button.destination__controls__btn(type='submit', autofocus='')
+					| Regions
+				button.destination__controls__btn(type='submit')
+					| Cities
+				button.destination__controls__btn(type='submit')
+					| Places&ensp;
+					span.destination__controls__btn-desc
+						| of interest
+			.accordion
+				.accordion-item
+					#panelsStayOpen-collapseOne.accordion-collapse.collapse.show(style='')
+						.accordion-body
+							.container.accordion-container.text-center
+								.row.row-destination.align-items-start
+									.col-destination
+										figure.destination__col
+											.destination__col__img
+												img.destination__img-filter(
+													src=require('../../images/destinations/maldives.png'),
+													height='',
+													width='',
+													alt='maldives.png'
+												)
+												button.destination__img__btn(type='submit')
+													| Book now
+											figcaption.destinations-caption Maldives
+									.col-destination
+										figure.destination__col
+											.destination__col-arrow.destination__col__img
+												img.destination__img-filter(
+													src=require('../../images/destinations/spain.png'),
+													height='',
+													width='',
+													alt='spain.png'
+												)
+												button.destination__img__btn(type='submit')
+													| Book now
+												.arrow.destination__arrow
+													svg.arrow-svg(width='28', height='28')
+														use(href='#arrow')
+											figcaption.destinations-caption Spain
+									.col-destination
+										figure.destination__col
+											.destination__col__img
+												img.destination__img-filter(
+													src=require('../../images/destinations/norway.png'),
+													height='',
+													width='',
+													alt='norway.png'
+												)
+												button.destination__img__btn(type='submit')
+													| Book now
+											figcaption.destinations-caption Norway
+									.col-destination
+										figure.destination__col
+											.destination__col__img
+												img.destination__img-filter(
+													src=require('../../images/destinations/island.png'),
+													height='',
+													width='',
+													alt='island.png'
+												)
+												button.destination__img__btn(type='submit')
+													| Book now
+											figcaption.destinations-caption Island
+				.accordion-item
+					#panelsStayOpen-collapseTwo.accordion-collapse.collapse(style='')
+						.accordion-body
+							.container.text-center
+								.row.row-destination.align-items-start
+									.col-destination
+										figure.destination__col
+											.destination__col__img
+												img.destination__img-filter(
+													src=require('../../images/destinations/france.png'),
+													height='',
+													width='',
+													alt='france.png'
+												)
+												button.destination__img__btn(type='submit')
+													| Book now
+											figcaption.destinations-caption France
+									.col-destination
+										figure.destination__col
+											.destination__col-arrow.destination__col__img
+												img.destination__img-filter(
+													src=require('../../images/destinations/japan.png'),
+													height='',
+													width='',
+													alt='japan.png'
+												)
+												button.destination__img__btn(type='submit')
+													| Book now
+												.arrow.destination__arrow
+													svg.arrow-svg(width='28', height='28')
+														use(href='#arrow')
+											figcaption.destinations-caption Japan
+									.col-destination
+										figure.destination__col
+											.destination__col__img
+												img.destination__img-filter(
+													src=require('../../images/destinations/scottland.png'),
+													height='',
+													width='',
+													alt='scottland.png'
+												)
+												button.destination__img__btn(type='submit')
+													| Book now
+											figcaption.destinations-caption Scottland
+									.col-destination
+										figure.destination__col
+											.destination__col__img
+												img.destination__img-filter(
+													src=require('../../images/destinations/russia.png'),
+													height='',
+													width='',
+													alt='russia.png'
+												)
+												button.destination__img__btn(type='submit')
+													| Book now
+											figcaption.destinations-caption Russia
+					h2.accordion-header
+						button.accordion-button.collapsed(
+							type='button',
+							data-bs-toggle='collapse',
+							data-bs-target='#panelsStayOpen-collapseTwo',
+							aria-expanded='false',
+							aria-controls='panelsStayOpen-collapseTwo'
+						)
+			.swiper.mySwiper
+				.swiper-wrapper
+					.swiper-slide.destinations__swiper
+						figure.destination__col
+							.destination__col__img
+								img.destination__img-filter(
+									src=require('../../images/destinations/maldives.png'),
+									height='',
+									width='',
+									alt='maldives.png'
+								)
+								button.destination__img__btn(type='submit')
+									| Book now
+							figcaption.destinations-caption Maldives
+					.swiper-slide.destinations__swiper
+						figure.destination__col
+							.destination__col-arrow.destination__col__img
+								img.destination__img-filter(
+									src=require('../../images/destinations/spain.png'),
+									height='',
+									width='',
+									alt='spain.png'
+								)
+								button.destination__img__btn(type='submit')
+									| Book now
+							figcaption.destinations-caption Spain
+					.swiper-slide.destinations__swiper
+						figure.destination__col
+							.destination__col__img
+								img.destination__img-filter(
+									src=require('../../images/destinations/norway.png'),
+									height='',
+									width='',
+									alt='norway.png'
+								)
+								button.destination__img__btn(type='submit')
+									| Book now
+							figcaption.destinations-caption Norway
+					.swiper-slide.destinations__swiper
+						figure.destination__col
+							.destination__col__img
+								img.destination__img-filter(
+									src=require('../../images/destinations/island.png'),
+									height='',
+									width='',
+									alt='island.png'
+								)
+								button.destination__img__btn(type='submit')
+									| Book now
+							figcaption.destinations-caption Island
+

@@ -1,0 +1,113 @@
+mixin reviews
+  section.reviews
+    .login.container
+      .login-desktop
+        .login-img
+          svg(width='86', height='86')
+            use(href='#login')
+        .login__discount
+          span Sign up and get 20% off your first booking
+          button.sign-up-btn(type='submit') Sign up
+        .cross
+          svg(width='26', height='26')
+            use(href='#cross')
+      .login-mob
+        .cross.cross-login
+          svg(width='16', height='16')
+            use(href='#cross')
+        .login__logo
+          svg(width='54', height='11')
+            use(href='#logo')
+        span Sign up and get 20% off your first booking
+        span.login-mob-install Install
+    .container
+      h2.title Guests reviews
+      .container.text-center
+        .row.row-reviews.align-items-start
+          .col.col-review
+            .review__col
+              figure.review__photo
+                img.review__photo(
+                  src=require('../../images/reviews/bali.png'),
+                  height='',
+                  width='',
+                  alt='bali.png'
+                )
+                figcaption.review__photo-price From 250 USD
+              .review__caption-col
+                .review__caption
+                  span Ubud Bali Resort&amp;SPA
+                  span.review__score 9.4
+                .review__caption
+                  span Bali, Indonesia
+                  span.review__count 1324 reviews
+                .review__user
+                  svg(width='54', height='54')
+                    use(href='#review-pic')
+                  .review__user-name
+                    div Hanna Ivanova
+                    .review__user-country &#x1F1FA;&#x1F1E6; Ukraine
+                .review__text
+                  | Great location, really pleasant and clean rooms, but the thing
+                  | that makes this such a good place to stay are the staff. All the
+                  | people are incredibly helpful and generous with their time and
+                  | advice.
+          .col.col-review
+            .review__col
+              figure.review__photo
+                img.review__photo(
+                  src=require('../../images/reviews/rotterdam.png'),
+                  height='',
+                  width='',
+                  alt='rotterdam.png'
+                )
+                figcaption.review__photo-price From 40 USD
+              .review__caption-col
+                .review__caption
+                  span King Kong Hostel
+                  span.review__score 8.9
+                .review__caption
+                  span Rotterdam, Netherlands
+                  span.review__count 2016 reviews
+                .review__user
+                  svg(width='54', height='54')
+                    use(href='#review-pic')
+                  .review__user-name
+                    div Adam Smith
+                    .review__user-country &#x1F1FA;&#x1F1F8; USA
+                .review__text
+                  | I&apos;ve been in this hostel for a month and here is the best hostel
+                  | of all Excellent management of excellent and ethical staff and
+                  | bedrooms Bathrooms are always clean and excellent Most
+                  | importantly, those who work here are kind and good-natured.
+          .col.col-review
+            .review__col
+              figure.review__photo
+                img.review__photo(
+                  src=require('../../images/reviews/marocco.png'),
+                  height='',
+                  width='',
+                  alt='marocco.png'
+                )
+                figcaption.review__photo-price From 100 USD
+              .review__caption-col
+                .review__caption
+                  span Rokoko Hotel
+                  span.review__score 9.1
+                .review__caption
+                  span Ourika, Marocco
+                  span.review__count 815 reviews
+                .review__user
+                  svg(width='54', height='54')
+                    use(href='#review-pic')
+                  .review__user-name
+                    div Anika Messer
+                    .review__user-country &#127465;&#127466; Germany
+                .review__text
+                  | Efficient, friendly, professional, and appropriately attentive.
+                  | Great hotel in a great location. Easy access to all the
+                  | surrounding historical sites. Staff is fantastic. Will
+                  | definitely stay at this location during my next stay in Marocco.
+      .review__slider
+        svg(width='56', height='8')
+          use(href='#slider')
