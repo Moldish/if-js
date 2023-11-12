@@ -101,5 +101,3 @@ function week(day, daysInMonth, daysInWeek, checkIn, checkOut) {
   }
   return weekArr;
 }
-
-console.log(month(2, 30, 7, 15, 25));
