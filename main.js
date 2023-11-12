@@ -1,53 +1,39 @@
-console.log('5. Функция palindrome');
-function palindrome(w) {
-  let lastSymbol = w.length - 1;
-  for (let i = 0; i < w.length; i++) {
-    if (w[i] !== w[lastSymbol - i]) {
-      return false;
-    }
+console.log('5. Напишите функцию sum, которая возвращает сумму чисел');
+
+function sum(num) {
+  let result = num;
+  function add(addNum) {
+    result += addNum;
+    console.log(result);
+    return add;
   }
-  return true;
+  return add;
 }
 
-console.log(palindrome('шалаш'));
+sum(2)(3);
 
-console.log('6. Функция min(a, b) и функция max(a,b)');
+console.log('6. Покрасьте абзацы по клику');
 
-function min(a, b) {
-  if (a < b) {
-    console.log(a);
-  } else {
-    console.log(b);
+const text1 = document.getElementById('text1');
+const text2 = document.getElementById('text2');
+const text3 = document.getElementById('text3');
+
+let currentColor = -1;
+function getColour() {
+  const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
+  currentColor++;
+  if (currentColor > colors.length - 1) {
+    currentColor = 0;
   }
+  return colors[currentColor];
 }
 
-min(10, 9);
-
-console.log('--------------');
-
-function max(a, b) {
-  b > a ? console.log(b) : console.log(a);
-}
-
-max(4, 2);
-
-console.log('7. Замена элементов массива. напишите функцию, которая будет заменять все 0 на строку \'zero\'');
-
-const generateArray = (length, max) =>
-  [...new Array(length)].map(() => Math.round(Math.random() * max));
-
-function replacer(array) {
-  let str = array.join(', ')
-  let output = ''
-  for (let i = 0; i < str.length; i ++) {
-    if (str[i] === '0') {
-      output += 'zero'
-    }
-    else {
-      output += str[i]
-    }
-  }
-  console.log(output)
-}
-
-replacer(generateArray(10, 100));
+text1.addEventListener('click', (event) => {
+  event.target.style.color = getColour();
+});
+text2.addEventListener('click', (event) => {
+  event.target.style.color = getColour();
+});
+text3.addEventListener('click', (event) => {
+  event.target.style.color = getColour();
+});
