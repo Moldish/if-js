@@ -1,48 +1,53 @@
-console.log('6. Работа с переменными:');
-
-let user = 'John Doe';
-
-console.log(user);
-
-const student = 'Vladyslav Davydkin';
-
-console.log(student);
-
-user = student;
-
-console.log(user);
-
-console.log('7. Работа с примитивами:');
-
-let test = 1;
-test += 1;
-console.log(test);
-test -= 1;
-console.log(test);
-console.log(!!test);
-
-console.log('8. Дан массив. найдите произведение элементов этого массива:');
-
-const array = [2, 3, 5, 8];
-let result = 0;
-for (let i = 0; i < array.length; i++) {
-  result += array[i];
+console.log('5. Функция palindrome');
+function palindrome(w) {
+  let lastSymbol = w.length - 1;
+  for (let i = 0; i < w.length; i++) {
+    if (w[i] !== w[lastSymbol - i]) {
+      return false;
+    }
+  }
+  return true;
 }
-console.log(result);
 
-console.log('9. Дан массив. выведите в консоль те элементы массива, которые больше 5-ти, но меньше 10-ти');
+console.log(palindrome('шалаш'));
 
-const array2 = [2, 5, 8, 15, 0, 6, 20, 3];
-for (let i = 0; i < array2.length; i++) {
-  if (array2[i] > 5 && array2[i] < 10) {
-    console.log(array2[i]);
+console.log('6. Функция min(a, b) и функция max(a,b)');
+
+function min(a, b) {
+  if (a < b) {
+    console.log(a);
+  } else {
+    console.log(b);
   }
 }
 
-console.log('10. Дан массив. выведите в консоль четные элементы массива.');
+min(10, 9);
 
-for (let i = 0; i < array2.length; i++) {
-  if (array2[i] % 2 === 0) {
-    console.log(array2[i]);
-  }
+console.log('--------------');
+
+function max(a, b) {
+  b > a ? console.log(b) : console.log(a);
 }
+
+max(4, 2);
+
+console.log('7. Замена элементов массива. напишите функцию, которая будет заменять все 0 на строку \'zero\'');
+
+const generateArray = (length, max) =>
+  [...new Array(length)].map(() => Math.round(Math.random() * max));
+
+function replacer(array) {
+  let str = array.join(', ')
+  let output = ''
+  for (let i = 0; i < str.length; i ++) {
+    if (str[i] === '0') {
+      output += 'zero'
+    }
+    else {
+      output += str[i]
+    }
+  }
+  console.log(output)
+}
+
+replacer(generateArray(10, 100));
