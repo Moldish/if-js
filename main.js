@@ -1,39 +1,61 @@
-import hotels from './data.js';
+const obj1 = {
+  a: 'a',
+  b: {
+    a: 'a',
+    b: 'b',
+    c: {
+      a: 1,
+    },
+  },
+};
+const obj2 = {
+  b: {
+    c: {
+      a: 1,
+    },
+    b: 'b',
+    a: 'a',
+  },
+  a: 'a',
+};
+const obj3 = {
+  a: {
+    c: {
+      a: 'a',
+    },
+    b: 'b',
+    a: 'a',
+  },
+  b: 'b',
+};
 
-const palindromeCheck = (x) =>
-  console.log(x === x.split('').reverse('').join(''));
+function deepEqual(obj1, obj2) {
+  if (obj1 === obj2) {
+    return true;
+  }
 
-palindromeCheck('шалаш');
+  if (obj1 == null || typeof obj1 !== "object" || obj2 == null || typeof obj2 !== "object") {
+    return false;
+  }
 
-console.log('----------');
-function search(searchRequest) {
-  const searchResult = hotels.reduce((acc, item) => {
-    if (
-      item.country === searchRequest ||
-      item.city === searchRequest ||
-      item.name === searchRequest
-    ) {
-      acc += [`${item.country} ${item.city} ${item.name} `];
+  const keys1 = Object.keys(obj1);
+  const keys2 = Object.keys(obj2);
+
+  if (keys1.length !== keys2.length) {
+    return false;
+  }
+
+  for (let key of keys1) {
+    if (!keys2.includes(key) || !deepEqual(obj1[key], obj2[key])) {
+      return false;
     }
-    return acc;
-  });
-  console.log(searchResult);
+  }
+
+  return true;
 }
 
-search('USA');
-
-console.log('----------');
-
-const searchUnique = (hotels) =>
-  hotels.reduce((result, hotels) => {
-    result[hotels.country]
-      ? result[hotels.country].push(hotels.city)
-      : (result[hotels.country] = [hotels.city]);
-
-    return result;
-  }, {});
-
-console.log(searchUnique(hotels));
+console.log(deepEqual(obj1, obj2));
+console.log(deepEqual(obj1, obj3));
 
 console.log('----------');
 
