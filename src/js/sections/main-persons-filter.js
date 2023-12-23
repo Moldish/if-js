@@ -5,7 +5,7 @@ function counterBehavior(name, counterId, limit, children) {
   const text = document.createElement('span');
   const minusBtn = counter.nextElementSibling;
   const plusBtn = counter.previousElementSibling;
-  plusBtn.classList.add('count-btn-count-btn-disable');
+  plusBtn.classList.add('count-btn-disable');
   let count = 0;
   counter.textContent = count;
   text.textContent = `${count} ${counterName} `;
