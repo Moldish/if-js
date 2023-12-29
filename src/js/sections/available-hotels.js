@@ -4,24 +4,32 @@ const hotelsContainer = document.getElementById('available-hotels');
 const availableSection = document.querySelector('.available-hotels');
 const showMoreBtn = document.getElementById('showMoreBtn');
 
+const savedHotels = JSON.parse(sessionStorage.getItem('hotels'))
+
 function getHotels() {
-    resetAvailable ()
+    resetAvailable()
     const searchQuery = searchInput.value.toLowerCase()
     const url = 'https://if-student-api.onrender.com/api/hotels';
     const searchUrl = `${url}?search=${searchQuery}`;
 
-    fetch(searchUrl)
-    .then(response => {
-        if (response.ok) {
-           return response.json()
-        }
-        else {return new Error('Error')}
-    })
-    .then(data => {
-        data.forEach((item) => renderAvailable(item))
-        showMore ()
-    })
-    .catch(error => console.error('Error:', error))
+    if (savedHotels !== null) {
+        savedHotels.forEach((item) => renderAvailable(item))
+    } else {
+        fetch(searchUrl)
+            .then(response => {
+                if (response.ok) {
+                    return response.json()
+                } else {
+                    return new Error('Error')
+                }
+            })
+            .then(data => {
+                sessionStorage.setItem('hotels', JSON.stringify(data))
+                data.forEach((item) => renderAvailable(item))
+                showMore()
+            })
+            .catch(error => console.error('Error:', error))
+    }
 }
 
 function renderAvailable(hotel) {

@@ -64,7 +64,6 @@ function getHotels () {
       })
       .then (data => {
             data.forEach((item) => renderHotel(item))
-            console.log(data)
       })
 }
 
