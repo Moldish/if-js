@@ -4,7 +4,6 @@ const colorsChange = {
   data: colorArr,
   from: 0,
   to: colorArr.length,
-
   [Symbol.iterator]() {
     return this;
   },
