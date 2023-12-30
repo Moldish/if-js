@@ -1,125 +1,55 @@
-const obj1 = {
-  a: 'a',
-  b: {
-    a: 'a',
-    b: 'b',
-    c: {
-      a: 1,
-    },
-  },
-};
-const obj2 = {
-  b: {
-    c: {
-      a: 1,
-    },
-    b: 'b',
-    a: 'a',
-  },
-  a: 'a',
-};
-const obj3 = {
-  a: {
-    c: {
-      a: 'a',
-    },
-    b: 'b',
-    a: 'a',
-  },
-  b: 'b',
-};
+import studentsData from "./data.js";
+class User {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+  
+  get fullName () {
+    return `${this.firstName} ${this.lastName}`
+  }
+}
+let user = new User("Ivan", "Ivanov");
 
-function deepEqual(obj1, obj2) {
-  if (obj1 === obj2) {
-    return true;
+console.log(user)
+
+class Student extends User {
+  constructor(admissionYear, courseName, firstName, lastName) {
+    super(firstName, lastName);
+    this.admissionYear = admissionYear;
+    this.courseName = courseName
   }
 
-  if (obj1 == null || typeof obj1 !== "object" || obj2 == null || typeof obj2 !== "object") {
-    return false;
+  get course() {
+    let currentYear = 2023
+    return currentYear - this.admissionYear
   }
-
-  const keys1 = Object.keys(obj1);
-  const keys2 = Object.keys(obj2);
-
-  if (keys1.length !== keys2.length) {
-    return false;
-  }
-
-  for (let key of keys1) {
-    if (!keys2.includes(key) || !deepEqual(obj1[key], obj2[key])) {
-      return false;
-    }
-  }
-
-  return true;
 }
 
-console.log(deepEqual(obj1, obj2));
-console.log(deepEqual(obj1, obj3));
+let student = new Student(2019, "Java", "Ivan", "Ivanoff")
+console.log(student)
 
-console.log('----------');
+class Students {
+  constructor(array) {
+    this.array = array.reduce((array, student) => {
+      array.push(
+          new Student(
+              student.admissionYear,
+              student.courseName,
+              student.firstName,
+              student.lastName,
+          ),
+      );
+      return array;
+    }, []);
+  }
 
-function month(day, daysInMonth, daysInWeek, checkIn, checkOut) {
-  if (day > daysInWeek) {
-    throw new Error('День больше количества дней в неделе');
+  getInfo() {
+    return this.array
+        .sort((a, b) => (a.course - b.course))
+        .map((student) => `${student.fullName} - ${student.courseName}, ${student.course} курс`)
   }
-  const monthArr = [];
-  if (day > 1 && day <= daysInWeek) {
-    const weekArr = [];
-    let prevMonth = daysInMonth - day;
-    while (prevMonth <= daysInMonth) {
-      const dayInfo = {
-        dayOfMonth: prevMonth,
-        notCurrentMonth: true,
-        selectedDay: false,
-      };
-      prevMonth++;
-      weekArr.push(dayInfo);
-      day = 1;
-    }
-    if (weekArr.length < daysInWeek) {
-      while (weekArr.length < daysInWeek && day <= daysInMonth) {
-        const selectCheck = day >= checkIn && day <= checkOut;
-        const dayInfo = {
-          dayOfMonth: day,
-          notCurrentMonth: false,
-          selectedDay: selectCheck,
-        };
-        weekArr.push(dayInfo);
-        day++;
-      }
-    }
-    monthArr.push(weekArr);
-  }
-  while (day < daysInMonth) {
-    monthArr.push(week(day, daysInMonth, daysInWeek, checkIn, checkOut));
-    day += daysInWeek;
-  }
-  return monthArr;
 }
 
-function week(day, daysInMonth, daysInWeek, checkIn, checkOut) {
-  const weekArr = [];
-  let nextMonth = 1;
-  while (weekArr.length < daysInWeek) {
-    if (weekArr.length < daysInWeek && day <= daysInMonth) {
-      const selectCheck = day >= checkIn && day <= checkOut;
-      const dayInfo = {
-        dayOfMonth: day,
-        notCurrentMonth: false,
-        selectedDay: selectCheck,
-      };
-      weekArr.push(dayInfo);
-      day++;
-    } else if (day > daysInMonth) {
-      const dayInfo = {
-        dayOfMonth: nextMonth,
-        notCurrentMonth: true,
-        selectedDay: false,
-      };
-      weekArr.push(dayInfo);
-      nextMonth++;
-    }
-  }
-  return weekArr;
-}
+let students = new Students(studentsData)
+console.log(students.getInfo());
