@@ -26,7 +26,10 @@ mixin main
           input#city-search.city-search.filter__element(type='text', name='city', placeholder='City')
         div.filter__element-date
           label.filter__label(for='date-in') Check-in &mdash; Check-out
-          button.calendar-opener 📅 Check-in — Check-out
+          button.calendar-opener 📅
+            span#check-in Check-in
+            span —
+            span#check-out Check-out
           .content-calendar
             table.calendar-body#calendar-body
               tbody
