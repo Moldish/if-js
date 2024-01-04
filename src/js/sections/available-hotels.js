@@ -61,6 +61,18 @@ function showMore() {
     showMoreBtn.style.display = 'none';
   });
 }
+function bubbleSort(arr, param) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length - 1; j++) {
+      if (arr[j][param] > arr[j + 1][param]) {
+        const temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+      }
+    }
+  }
+  return arr;
+}
 
 export function getHotels(searchUrl) {
   resetAvailable();
@@ -76,6 +88,7 @@ export function getHotels(searchUrl) {
       })
       .then((data) => {
         sessionStorage.setItem('hotels', JSON.stringify(data));
+        bubbleSort(data, 'name');
         data.forEach((item) => renderAvailable(item));
         showMore();
       })
