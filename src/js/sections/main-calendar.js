@@ -156,7 +156,7 @@ function getCalendar() {
             //
             for (let i = min + 1; i < max; i += 1) {
               days.push(i);
-              cellsTd[i + 3].classList.add('calendar-element-selected');
+              cellsTd[i - 1].classList.add('calendar-element-selected');
             }
           }
         } else if (!checkOut) {
@@ -169,7 +169,7 @@ function getCalendar() {
           //
           for (let i = min + 1; i < max; i += 1) {
             days.push(i);
-            cellsTd[i + 3].classList.add('calendar-element-selected');
+            cellsTd[i - 1].classList.add('calendar-element-selected');
           }
         }
       } else {

@@ -1,5 +1,5 @@
 .main {
-  height: 100vh;
+  height: 100dvh;
   background-image: url('../../images/main/background.svg');
   background-size: cover;
 }
@@ -208,7 +208,7 @@
 
   .counter {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: baseline;
   }
 
@@ -230,6 +230,11 @@
   .count-btn-disable {
     color: var(--text-secodary);
     border: var(--text-secodary) solid 1px;
+  }
+
+  .counter-num {
+    min-width: 18px;
+    text-align: center;
   }
 
   .child-block {
@@ -259,10 +264,10 @@
 }
 
 .downloads {
+  padding: 120px 0;
   display: flex;
   gap: 16px;
   justify-content: center;
-  padding-top: 120px;
 }
 
 @media (max-width: 468px) {

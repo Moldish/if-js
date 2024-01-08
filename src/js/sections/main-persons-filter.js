@@ -1,4 +1,4 @@
-function counterBehavior(name, counterId, limit, children) {
+function counterBehavior(name, counterId, max, min, children) {
   const counter = document.getElementById(counterId);
   const counterName = name.toString();
   const textBlock = document.querySelector('.counter-opener');
@@ -6,21 +6,21 @@ function counterBehavior(name, counterId, limit, children) {
   const minusBtn = counter.nextElementSibling;
   const plusBtn = counter.previousElementSibling;
   plusBtn.classList.add('count-btn-disable');
-  let count = 0;
+  let count = min;
   counter.textContent = count;
   text.textContent = `${count} ${counterName} `;
   textBlock.appendChild(text);
   const btnStatus = () => {
-    if (count === limit) {
+    if (count === max) {
       minusBtn.classList.add('count-btn-disable');
     }
-    if (count !== limit) {
+    if (count !== max) {
       minusBtn.classList.remove('count-btn-disable');
     }
-    if (count === 0) {
+    if (count === min) {
       plusBtn.classList.add('count-btn-disable');
     }
-    if (count !== 0) {
+    if (count !== min) {
       plusBtn.classList.remove('count-btn-disable');
     }
   };
@@ -49,7 +49,9 @@ function counterBehavior(name, counterId, limit, children) {
       for (let i = 0; i <= 17; i += 1) {
         const age = document.createElement('option');
         age.value = i;
-        age.text = `${i} years old`;
+        if (i === 1) {
+          age.text = `${i} year old`;
+        } else {age.text = `${i} years old`;}
         select.appendChild(age);
       }
     }
@@ -72,7 +74,7 @@ function counterBehavior(name, counterId, limit, children) {
 
   const increase = (event) => {
     event.preventDefault();
-    if (count < limit) {
+    if (count < max) {
       count += 1;
       counter.textContent = count;
       text.textContent = `${count} ${counterName} `;
@@ -86,7 +88,7 @@ function counterBehavior(name, counterId, limit, children) {
 
   const decrease = (event) => {
     event.preventDefault();
-    if (count > 0) {
+    if (count > min) {
       count -= 1;
       counter.textContent = count;
       text.textContent = `${count} ${counterName} `;
@@ -97,6 +99,7 @@ function counterBehavior(name, counterId, limit, children) {
     btnStatus();
     resize();
   };
+  //
   const counterOpener = document.getElementsByClassName('counter-opener');
   for (let i = 0; i < counterOpener.length; i += 1) {
     counterOpener[i].addEventListener('click', function (event) {
@@ -114,6 +117,6 @@ function counterBehavior(name, counterId, limit, children) {
   plusBtn.addEventListener('click', decrease);
 }
 
-counterBehavior('Adults', 'adult-count', 30);
-counterBehavior('Children', 'children-count', 10, true);
-counterBehavior('Rooms', 'rooms-count', 30);
+counterBehavior('Adults', 'adult-count', 30, 1, false);
+counterBehavior('Children', 'children-count', 10, 0, true);
+counterBehavior('Rooms', 'rooms-count', 30, 1, false);
