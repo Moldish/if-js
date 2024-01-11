@@ -20,35 +20,38 @@ mixin main
           | Discover stays
           br
           | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;to live, work or just relax
-      form.filter.content(action='', method='get')
+      div.filter.content
         .filter__element-city
           label.filter__label(for='city-search') Your destination or hotel name
           input#city-search.city-search.filter__element(type='text', name='city', placeholder='City')
-        .filter__element-date
+        div.filter__element-date
           label.filter__label(for='date-in') Check-in &mdash; Check-out
-          input#date-in.filter__element(type='date', name='date')
-          input#date-out.filter__element(type='date', name='date')
-        .filter__element-persons
-          select#adults.filter__element.filter__element-p(name='adults')
-            option(value='1', selected='', disabled='') Adults
-            option(value='1') 1 Adult
-            option(value='2') 2 Adults
-            option(value='3') 3 Adults
-          span.filter__element-separate-h &mdash;
-          .filter__element-separate-v
-          select#children.filter__element.filter__element-p(name='children')
-            option(value='2', selected='', disabled='') Children
-            option(value='1') 1 Child
-            option(value='2') 2 Children
-            option(value='3') 3 Children
-          span.filter__element-separate-h &mdash;
-          .filter__element-separate-v
-          select#room.filter__element.filter__element-p(name='rooms')
-            option(value='1', selected='', disabled='') Rooms
-            option(value='1') 1 Room
-            option(value='2') 2 Rooms
-            option(value='3') 3 Rooms
-        button.filter__btn(type='submit') Search
+          button.calendar-opener 📅 Check-in — Check-out
+          .content-calendar
+            table.calendar-body#calendar-body
+              tbody
+            table.calendar-body#calendar-body-next
+              tbody
+        div.filter__element-persons
+          button.counter-opener
+          .content-persons#counter-body
+            div.counter
+              span.counter-name Adults
+              button.count-btn -
+              span.counter-num#adult-count
+              button.count-btn +
+            div.counter
+              span.counter-name Children
+              button.count-btn -
+              span.counter-num#children-count
+              button.count-btn +
+            div.counter
+              span.counter-name Rooms
+              button.count-btn -
+              span.counter-num#rooms-count
+              button.count-btn +
+            div#child-block
+        button#search-btn.filter__btn Search
       .downloads
         svg(width='135', height='40')
           use(href='#google')
