@@ -1,0 +1,46 @@
+.available-hotels {
+  display: none;
+}
+
+.available-pic {
+  max-width: 300px;
+  aspect-ratio: 1/1;
+}
+
+.available-hotel-figure {
+  padding: 16px;
+  display: flex;
+  border-radius: 24px;
+  border: solid 1px var(--text-secodary);
+  background-color: var(--bg-colour);
+}
+
+.available-hotel-pic {
+  max-width: 300px;
+  aspect-ratio: 1/1;
+  border-radius: 16px;
+}
+
+.available-hotel-name {
+  padding-left: 16px;
+  font-size: 32px;
+  color: var(--accent-blue)
+}
+
+.available-hotel-location {
+  color: var(--text-main);
+  font-size: 24px;
+}
+
+.showMoreBtn {
+  font-size: 18px;
+  display: none;
+  max-width: 150px;
+  padding: 8px;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 8px;
+  border: 1px solid var(--text-main);
+  background-color: var(--bg-colour);
+}
+
