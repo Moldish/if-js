@@ -13,17 +13,22 @@ fileInput.addEventListener('change', (event) => {
   reader.readAsDataURL(file);
 });
 
-form.addEventListener('submit', (event) => {
+form.addEventListener('change', async (event) => {
   event.preventDefault();
 
-  const formData = new FormData();
+  const formData = new FormData(form);
 
-  fetch('https://if-student-api.onrender.com/api/file', {
-    method: 'POST',
-    dody: formData,
-  })
-    .then((response) => response.json)
-    .then((data) => console.log(data));
+  try {
+    const response = await fetch('https://if-student-api.onrender.com/api/file', {
+      method: 'POST',
+      body: formData,
+    });
+
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error('Error:', error);
+  }
 });
 
 imagePreview.addEventListener('click', () => {

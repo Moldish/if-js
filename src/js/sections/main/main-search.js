@@ -1,4 +1,4 @@
-import { getHotels } from '../available-hotels';
+import getHotels from '../available-hotels';
 
 function getUrl() {
   const searchInput = document.getElementById('city-search');
@@ -18,8 +18,7 @@ function getUrl() {
   const getTime = (dateString) => {
     const parts = dateString.split('.');
     const dateObj = new Date(parts[2], parts[1] - 1, parts[0]);
-    const time = dateObj.getTime();
-    return time;
+    return dateObj.getTime();
   };
 
   const checkIn = getTime(checkInSpace);

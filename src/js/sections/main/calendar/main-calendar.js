@@ -1,4 +1,4 @@
-export function month(daysInWeek, checkIn, checkOut) {
+export default function month(daysInWeek, checkIn, checkOut) {
   const currentDate = new Date();
   currentDate.setDate(1);
   let day = currentDate.getDay();

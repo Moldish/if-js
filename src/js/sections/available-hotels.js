@@ -50,20 +50,20 @@ function showMore() {
     showMoreBtn.style.display = 'block';
   }
 
-  for (let i = 5; i < hotelsContainer.children.length; i++) {
+  for (let i = 5; i < hotelsContainer.children.length; i += 1) {
     hotelsContainer.children[i].style.display = 'none';
   }
 
   showMoreBtn.addEventListener('click', () => {
-    for (let i = 5; i < hotelsContainer.children.length; i++) {
+    for (let i = 5; i < hotelsContainer.children.length; i += 1) {
       hotelsContainer.children[i].style.display = 'flex';
     }
     showMoreBtn.style.display = 'none';
   });
 }
 function bubbleSort(arr, param) {
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j < arr.length - 1; j++) {
+  for (let i = 0; i < arr.length; i += 1) {
+    for (let j = 0; j < arr.length - 1; j += 1) {
       if (arr[j][param] > arr[j + 1][param]) {
         const temp = arr[j];
         arr[j] = arr[j + 1];
@@ -74,10 +74,11 @@ function bubbleSort(arr, param) {
   return arr;
 }
 
-export function getHotels(searchUrl) {
+export default function getHotels(searchUrl) {
   resetAvailable();
   if (savedHotels !== null) {
     savedHotels.forEach((item) => renderAvailable(item));
+    showMore();
   } else {
     fetch(searchUrl)
       .then((response) => {

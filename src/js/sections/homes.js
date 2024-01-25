@@ -29,7 +29,7 @@ function swiper() {
 
 swiper();
 
-function renderHotel (item) {
+function renderHotel(item) {
   const fig = document.createElement('figure');
   if (windowInnerWidth < 468) {
     fig.classList.add('homes__col-mob');
@@ -54,17 +54,17 @@ function renderHotel (item) {
   swiperContent.appendChild(fig);
 }
 
-function getHotels () {
+function getHotels() {
   fetch('https://if-student-api.onrender.com/api/hotels/popular')
-      .then (response => {
-        if (response.ok) {
-          return response.json()
-        }
-        else {alert('Error')}
-      })
-      .then (data => {
-            data.forEach((item) => renderHotel(item))
-      })
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      alert('Error');
+    })
+    .then((data) => {
+      data.forEach((item) => renderHotel(item));
+    });
 }
 
 getHotels();

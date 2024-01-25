@@ -1,4 +1,4 @@
-import { month } from './main-calendar';
+import month from './main-calendar';
 
 const calendarBody = document.getElementById('calendar-body');
 
