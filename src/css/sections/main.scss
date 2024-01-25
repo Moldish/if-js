@@ -1,12 +1,12 @@
 .main {
-  height: 100vh;
+  min-height: 100vh;
   background-image: url('../../images/main/background.svg');
   background-size: cover;
 }
 
 .header {
   padding-top: 50px;
-  padding-bottom: 200px;
+  padding-bottom: 180px;
   fill: var(--accent-blue);
 
   &__navbar {
@@ -60,6 +60,7 @@
   margin: 0 auto;
   border-radius: 8px;
   background-color: var(--white);
+  font-size: 18px;
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr 192px;
 
@@ -74,7 +75,6 @@
   &__element {
     border-radius: 8px;
     border: none;
-    font-size: 18px;
     appearance: none;
     height: 100%;
     color: var(--text-main);
@@ -95,6 +95,10 @@
     padding-left: 24px;
   }
 
+  .city-search:hover {
+    border: var(--selection-colour) 3px solid;
+  }
+
   &__element-date {
     grid-column: 2;
     position: relative;
@@ -102,33 +106,154 @@
     justify-content: space-between;
   }
 
-  #date-in {
-    width: 50%;
-    padding-left: 24px;
-  }
-
-  #date-out {
-    width: 50%;
-    padding-right: 24px;
-  }
-
   &__element-persons {
     grid-column: 3;
     display: flex;
-    align-items: center;
+    position: relative;
   }
 
-  &__element-p {
+  .calendar-opener {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    border-radius: 8px;
+    background-color: transparent;
+    width: 100%;
+  }
+
+  .calendar-opener:hover {
+    border: var(--selection-colour) 3px solid;
+  }
+
+  .content-calendar {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 70px;
+    right: 50%;
+    transform: translateX(50%);
+    padding: 0 18px;
+    margin-top: 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    border-radius: 8px;
+    background-color: var(--white);
+  }
+
+  .calendar-body {
+    margin: 10px 0;
     text-align: center;
-    width: 33.3%;
   }
 
-  &__element-p:nth-child(1) {
-    padding-left: 24px;
+  .calendar-month-year {
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--text-main);
   }
 
-  &__element-p:nth-child(5) {
-    padding-right: 24px;
+  .calendar-elements {
+    cursor: pointer;
+    padding: 6px 8px;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--dark-mode-3);
+  }
+
+  .calendar-element-inactive {
+    color: var(--text-secodary);
+  }
+
+  .calendar-element-selected {
+    background-color: var(--stroke-colour);
+  }
+
+  .calendar-element-selected-first {
+    background-color: var(--accent-blue);
+    color: var(--white);
+  }
+
+  .calendar-element-current {
+    color: var(--accent-blue);
+  }
+
+  .counter-opener {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    border-radius: 8px;
+    background-color: transparent;
+    width: 100%;
+  }
+
+  .counter-opener:hover {
+    border: var(--selection-colour) 3px solid;
+  }
+
+  .content-persons {
+    max-width: 260px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    z-index: 100;
+    padding: 0 18px;
+    margin: 20px 0 0 56px;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.2s ease-out;
+    border-radius: 8px;
+    background-color: var(--white);
+  }
+
+  .counter {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    font-size: 16px;
+  }
+
+  .counter-name {
+    max-width: 60px;
+    width: 100%;
+  }
+
+  .count-btn {
+    width: 30px;
+    height: 30px;
+    color: var(--accent-blue);
+    border: var(--accent-blue) solid 1px;
+    font-size: 18px;
+    margin: 12px 21px;
+    background-color: var(--white);
+  }
+
+  .count-btn-disable {
+    color: var(--text-secodary);
+    border: var(--text-secodary) solid 1px;
+  }
+
+  .counter-num {
+    min-width: 18px;
+    text-align: center;
+  }
+
+  .child-block {
+    padding-bottom: 6px;
+    font-size: 12px;
+  }
+
+  .child-select {
+    border: var(--accent-blue) solid 1px;
+    color: var(--black);
+    font-size: 12px;
+    font-weight: 400;
+    padding: 8px;
+    margin-bottom: 12px;
+    max-width: 120px;
   }
 
   &__btn {

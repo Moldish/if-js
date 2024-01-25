@@ -8,11 +8,13 @@
   right: 20px;
   width: 40px;
   height: 40px;
-  opacity: .5;
+  opacity: 0.5;
+  transition: all 0.2s;
 }
 
 .swiper-button-next:hover {
   opacity: 1;
+  transition: all 0.2s;
 }
 
 .swiper-button-next:after {
@@ -29,11 +31,13 @@
   left: 6px;
   width: 40px;
   height: 40px;
-  opacity: .5;
+  opacity: 0.5;
+  transition: all 0.2s;
 }
 
 .swiper-button-prev:hover {
   opacity: 1;
+  transition: all 0.2s;
 }
 
 .swiper-button-prev:after {

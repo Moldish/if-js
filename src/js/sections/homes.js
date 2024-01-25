@@ -1,8 +1,8 @@
 import Swiper from 'swiper';
 import { Navigation, FreeMode } from 'swiper/modules';
-import data from './hotel-data';
 
 const windowInnerWidth = document.documentElement.clientWidth;
+const swiperContent = document.getElementById('js-swiper');
 
 function swiper() {
   if (windowInnerWidth < 468) {
@@ -29,9 +29,7 @@ function swiper() {
 
 swiper();
 
-const swiperContent = document.getElementById('js-swiper');
-
-data.forEach((item) => {
+function renderHotel(item) {
   const fig = document.createElement('figure');
   if (windowInnerWidth < 468) {
     fig.classList.add('homes__col-mob');
@@ -54,4 +52,19 @@ data.forEach((item) => {
   fig.appendChild(hotelPlace);
   //
   swiperContent.appendChild(fig);
-});
+}
+
+function getHotels() {
+  fetch('https://if-student-api.onrender.com/api/hotels/popular')
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      alert('Error');
+    })
+    .then((data) => {
+      data.forEach((item) => renderHotel(item));
+    });
+}
+
+getHotels();
